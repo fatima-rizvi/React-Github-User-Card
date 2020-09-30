@@ -24,8 +24,8 @@ class UserCard extends React.Component {
 
   componentDidMount() {
     this.fetchUser(this.state.username)
-    this.fetchFollowersArray(this.state.username)
-    console.log("Followers url: ",this.state.followersLink);
+    // this.fetchFollowersArray(this.state.username)
+    // console.log("Followers url: ",this.state.followersLink);
   }
 
   handleUsernameChange = (e) => {
@@ -56,6 +56,8 @@ class UserCard extends React.Component {
             following: data.following,
             followingLink: data.following_url
         });
+        this.fetchFollowersArray(this.state.username)
+        console.log("Followers url: ",this.state.followersLink);
       })
       .catch((err) => console.log("error: ", err));
   };
