@@ -1,23 +1,18 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import './App.css';
 
 class FollowerCards extends React.Component {
+
     state = {
-      name: '',
-      picture: '',
-      username: 'fatima-rizvi',
-      profile: '',
-      followers: null,
-      followersLink: '',
-      followersArray: [],
-      following: null,
-      followingLink: ''
-    };
+      followersAPI: `${this.props.followersLink}`,
+      followersArray: []
+    };  
   
     componentDidMount() {
-      this.fetchUser(this.state.username)
-      this.fetchFollowersArray(this.state.followersLink)
-      console.log("Followers url: ",this.state.followersLink);
+      //this.fetchUser(this.state.username)
+      this.fetchFollowersArray(this.state.followersAPI)
+      console.log("Followers url: ",this.state.followersAPI);
     }
   
   //   handleUsernameChange = (e) => {
@@ -65,20 +60,24 @@ class FollowerCards extends React.Component {
     };
   
     render() {
-      return (
-        <div className = 'card'>
-          <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
-          <div className = 'card-info'>
-              <h3 className = 'username'>Name: {this.state.name}</h3>
-              <p>Username: {this.state.username}</p>
-              <p>Profile: 
-                  <a href = {this.state.profile}>{this.state.profile}</a>
-              </p>
-              <p>Followers: {this.state.followers}</p>
-              <p>Following: {this.state.following}</p>
-          </div>
-        </div>
+      console.log("FollowerCards state: ",this.state)
+      return(
+        <h1>Hi</h1>
       )
+      // return (
+      //   <div className = 'card'>
+      //     <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
+      //     <div className = 'card-info'>
+      //         <h3 className = 'username'>Name: {this.state.name}</h3>
+      //         <p>Username: {this.state.username}</p>
+      //         <p>Profile: 
+      //             <a href = {this.state.profile}>{this.state.profile}</a>
+      //         </p>
+      //         <p>Followers: {this.state.followers}</p>
+      //         <p>Following: {this.state.following}</p>
+      //     </div>
+      //   </div>
+      // )
     }
   
   };

@@ -69,17 +69,20 @@ class UserCard extends React.Component {
 
   render() {
     return (
-      <div className = 'card'>
-        <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
-        <div className = 'card-info'>
-            <h3 className = 'username'>Name: {this.state.name}</h3>
-            <p>Username: {this.state.username}</p>
-            <p>Profile: 
-                <a href = {this.state.profile}>{this.state.profile}</a>
-            </p>
-            <p>Followers: {this.state.followers}</p>
-            <p>Following: {this.state.following}</p>
+      <div className = 'all-cards'>
+        <div className = 'userCard'>
+          <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
+          <div className = 'card-info'>
+              <h3 className = 'username'>Name: {this.state.name}</h3>
+              <p>Username: {this.state.username}</p>
+              <p>Profile: 
+                  <a href = {this.state.profile}>{this.state.profile}</a>
+              </p>
+              <p>Followers: {this.state.followers}</p>
+              <p>Following: {this.state.following}</p>
+          </div>
         </div>
+        <FollowerCards followersLink = {this.state.followersLink} />
       </div>
     )
   }
