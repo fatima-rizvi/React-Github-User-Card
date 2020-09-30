@@ -12,30 +12,30 @@ class UserCard extends React.Component {
     profile: '',
     followers: null,
     followersLink: '',
-    //followersArray: [],
+    followersArray: [],
     following: null,
     followingLink: ''
   };
 
   componentDidMount() {
     this.fetchUser(this.state.username)
-    // this.fetchFollowersArray(this.state.followersLink)
-    // console.log("Followers url: ",this.state.followersLink);
+    this.fetchFollowersArray(this.state.followersLink)
+    console.log("Followers url: ",this.state.followersLink);
   }
 
-//   handleUsernameChange = (e) => {
-//     this.setState({
-//       username: e.target.value
-//     });
-//   };
+  // handleUsernameChange = (e) => {
+  //   this.setState({
+  //     username: e.target.value
+  //   });
+  // };
 
-//   handleSearch = (e) => {
-//     e.preventDefault();
-//     this.fetchUser(this.state.username);
-//   };
+  // handleSearch = (e) => {
+  //   e.preventDefault();
+  //   this.fetchUser(this.state.username);
+  // };
 
-  fetchUser = (username) => {
-    fetch(`https://api.github.com/users/${username}`)
+  fetchUser = () => {
+    fetch("https://api.github.com/users/fatima-rizvi")
       .then((res) => res.json())
       .then((data) => {
         console.log("Json results: ", data)
@@ -55,19 +55,20 @@ class UserCard extends React.Component {
       .catch((err) => console.log("error: ", err));
   };
 
-//   fetchFollowersArray = (followersLink) => {
-//     fetch(`${followersLink}`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         this.setState({
-//             followersArray: data
-//         })
-//         console.log("Json results follow: ", data)
-//       })
-//       .catch((err) => console.log("error: ", err));
-//   };
+  fetchFollowersArray = () => {
+    fetch("https://api.github.com/users/fatima-rizvi/followers")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+            followersArray: data
+        })
+        console.log("Json results follow: ", data)
+      })
+      .catch((err) => console.log("error: ", err));
+  };
 
   render() {
+    console.log("followers array: ",this.state.followersArray);
     return (
       <div className = 'all-cards'>
         <div className = 'userCard'>
@@ -75,14 +76,26 @@ class UserCard extends React.Component {
           <div className = 'card-info'>
               <h3 className = 'username'>Name: {this.state.name}</h3>
               <p>Username: {this.state.username}</p>
-              <p>Profile: 
+              <p>Profile:  
                   <a href = {this.state.profile}>{this.state.profile}</a>
               </p>
-              <p>Followers: {this.state.followers}</p>
-              <p>Following: {this.state.following}</p>
+              {/* <p>Followers: {this.state.followers}</p>
+              <p>Following: {this.state.following}</p> */}
           </div>
         </div>
-        <FollowerCards followersLink = {this.state.followersLink} />
+        <h2>Followers:</h2>
+        {this.state.followersArray.map((follower) => (
+            <div className = 'userCard'>
+              <img src = {follower.avatar_url} alt = 'profile pic' />
+              <div className = 'card-info'>
+                  <p>Username: {follower.login}</p>
+                  <p>Profile: 
+                      <a href = {follower.html_url}>{follower.html_url}</a>
+                  </p>
+              </div>
+            </div>
+          ))}
+        {/* <FollowerCards followersLink = {this.state.followersLink} /> */}
       </div>
     )
   }
