@@ -1,5 +1,10 @@
 import React from 'react';
 import './App.css';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle
+} from 'reactstrap';
+
 import FollowerCards from './FollowerCards'
 
 //api link https://api.github.com/users/fatima-rizvi
@@ -19,7 +24,7 @@ class UserCard extends React.Component {
 
   componentDidMount() {
     this.fetchUser(this.state.username)
-    this.fetchFollowersArray(this.state.followersLink)
+    this.fetchFollowersArray(this.state.username)
     console.log("Followers url: ",this.state.followersLink);
   }
 
@@ -34,8 +39,8 @@ class UserCard extends React.Component {
   //   this.fetchUser(this.state.username);
   // };
 
-  fetchUser = () => {
-    fetch("https://api.github.com/users/fatima-rizvi")
+  fetchUser = (username) => {
+    fetch(`https://api.github.com/users/${username}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Json results: ", data)
@@ -55,8 +60,8 @@ class UserCard extends React.Component {
       .catch((err) => console.log("error: ", err));
   };
 
-  fetchFollowersArray = () => {
-    fetch("https://api.github.com/users/fatima-rizvi/followers")
+  fetchFollowersArray = (username) => {
+    fetch(`https://api.github.com/users/${username}/followers`)
       .then((res) => res.json())
       .then((data) => {
         this.setState({
@@ -71,32 +76,46 @@ class UserCard extends React.Component {
     console.log("followers array: ",this.state.followersArray);
     return (
       <div className = 'all-cards'>
-        <div className = 'userCard'>
+        {/* <div className = 'userCard'>
           <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
           <div className = 'card-info'>
               <p className = 'username'>Username: {this.state.username}</p>
               <p>Profile:  
                   <a href = {this.state.profile}>{this.state.profile}</a>
               </p>
-              {/* <p>Followers: {this.state.followers}</p>
-              <p>Following: {this.state.following}</p> */}
           </div>
+        </div> */}
+        <div className = 'my-card'>
+          <Card className = 'userCard'>
+            <CardImg top width="100%" src = {this.state.picture} alt = 'profile pic' />
+            <CardBody>
+              <CardTitle>Username: {this.state.username}</CardTitle>
+              <CardText>Profile: <a href = {this.state.profile}>{this.state.profile}</a></CardText>
+            </CardBody>
+          </Card>
         </div>
         {/* <br /> */}
-        <h2>Followers:</h2>
-        {/* <div className = "followerCards"> */}
+        <h2 className = 'followText'>Followers:</h2>
+        <div className = "followerCards">
           {this.state.followersArray.map((follower) => (
-              <div className = 'userCard'>
-                <img src = {follower.avatar_url} alt = 'profile pic' />
-                <div className = 'card-info'>
-                    <p className = 'username'>Username: {follower.login}</p>
-                    <p>Profile: 
-                        <a href = {follower.html_url}>{follower.html_url}</a>
-                    </p>
-                </div>
-              </div>
+              // <div className = 'userCard'>
+              //   <img src = {follower.avatar_url} alt = 'profile pic' />
+              //   <div className = 'card-info'>
+              //       <p className = 'username'>Username: {follower.login}</p>
+              //       <p>Profile: 
+              //           <a href = {follower.html_url}>{follower.html_url}</a>
+              //       </p>
+              //   </div>
+              // </div>
+              <Card className = 'userCard'>
+                <CardImg top width="100%" src = {follower.avatar_url} alt = 'profile pic' />
+                <CardBody>
+                  <CardTitle>Username: {follower.login}</CardTitle>
+                  <CardText>Profile: <a href = {follower.html_url}>{follower.html_url}</a></CardText>
+                </CardBody>
+              </Card>
             ))}
-        {/* </div> */}
+        </div>
         {/* <FollowerCards followersLink = {this.state.followersLink} /> */}
       </div>
     )
