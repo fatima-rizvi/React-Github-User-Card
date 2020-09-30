@@ -74,8 +74,7 @@ class UserCard extends React.Component {
         <div className = 'userCard'>
           <img src = {this.state.picture} key = {this.state.picture} alt = 'profile pic' />
           <div className = 'card-info'>
-              <h3 className = 'username'>Name: {this.state.name}</h3>
-              <p>Username: {this.state.username}</p>
+              <p className = 'username'>Username: {this.state.username}</p>
               <p>Profile:  
                   <a href = {this.state.profile}>{this.state.profile}</a>
               </p>
@@ -83,18 +82,21 @@ class UserCard extends React.Component {
               <p>Following: {this.state.following}</p> */}
           </div>
         </div>
+        {/* <br /> */}
         <h2>Followers:</h2>
-        {this.state.followersArray.map((follower) => (
-            <div className = 'userCard'>
-              <img src = {follower.avatar_url} alt = 'profile pic' />
-              <div className = 'card-info'>
-                  <p>Username: {follower.login}</p>
-                  <p>Profile: 
-                      <a href = {follower.html_url}>{follower.html_url}</a>
-                  </p>
+        {/* <div className = "followerCards"> */}
+          {this.state.followersArray.map((follower) => (
+              <div className = 'userCard'>
+                <img src = {follower.avatar_url} alt = 'profile pic' />
+                <div className = 'card-info'>
+                    <p className = 'username'>Username: {follower.login}</p>
+                    <p>Profile: 
+                        <a href = {follower.html_url}>{follower.html_url}</a>
+                    </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+        {/* </div> */}
         {/* <FollowerCards followersLink = {this.state.followersLink} /> */}
       </div>
     )

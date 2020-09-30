@@ -1,8 +1,51 @@
+*{
+  max-width: 100%;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+.all-cards {
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  flex-flow: row wrap; */
+}
+
+.userCard {
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px -2px #000;
+  background-color: #FFF;
+  margin-bottom: 30px;
+}
+
+.userCard img {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  margin-right: 20px;
+}
+
+.userCard .name {
+  font-size: 3.4rem;
+}
+
+.userCard p {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+}
+
+.userCard .username {
+  font-size: 1.8rem;
+  font-style: italic;
+  margin: 3px 0 10px;
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +78,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
