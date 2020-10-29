@@ -1,0 +1,94 @@
+*{
+  max-width: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.all-cards {
+  width: 100%;
+  margin: 1rem;
+  /* display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap; */
+}
+
+.followText {
+  text-align: center;
+  margin: 1rem;
+}
+
+.followerCards, .my-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
+
+.userCard {
+  width: 22%;
+  padding: 1.5rem;
+  /* display: flex; */
+  border-radius: 5px;
+  box-shadow: 0 1px 6px -2px #000;
+  background-color: #FFF;
+  margin: 1rem;
+}
+
+/* .userCard img {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  margin-right: 20px;
+} */
+
+/* .userCard .name {
+  font-size: 3.4rem;
+} */
+
+/* .userCard p {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+} */
+
+/* .userCard .username {
+  font-size: 1.8rem;
+  font-style: italic;
+  margin: 3px 0 10px;
+} */
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
